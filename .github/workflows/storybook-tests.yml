@@ -18,4 +18,4 @@ jobs:
       - name: Serve storybook
         run: npx http-server storybook-static --port 6006 --silent &
       - name: Run test
-        run: npx wait-on tcp:6006 && yarn test-storybook
+        run: npx wait-on tcp:6006 && npm run test-storybook
