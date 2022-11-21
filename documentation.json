@@ -2,6 +2,29 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "Chainable",
+            "id": "interface-Chainable-9160cd25b067cdedce3c753957e0df6f9dd9697c47ca0667f8a91f74ac674a764ce3a5cd7a45c7f6876d51259c8586f63b1ee5bdfa4a1d5bf94457322018bd12",
+            "file": "cypress/support/component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import './commands'\n\n// Alternatively you can use CommonJS syntax:\n// require('./commands')\n\nimport { mount } from 'cypress/angular'\n\n// Augment the Cypress namespace to include type definitions for\n// your custom command.\n// Alternatively, can be defined in cypress/support/component.d.ts\n// with a <reference path=\"./component\" /> at the top of your spec.\ndeclare global {\n  namespace Cypress {\n    interface Chainable {\n      mount: typeof mount\n    }\n  }\n}\n\nCypress.Commands.add('mount', mount)\n\n// Example use:\n// cy.mount(MyComponent)",
+            "properties": [
+                {
+                    "name": "mount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "ColumnItem",
             "id": "interface-ColumnItem-2fa3e1d842c73fe2952af68d1de02213cc946e6143f04b64edf9383cb08992cc3ef50fd8aa630448d08720f1e96b9cbbca2cfd55db6bb843164a6be6dc895845",
             "file": "src/app/pages/welcome/welcome.component.ts",
@@ -824,6 +847,107 @@
                 }
             ],
             "stylesData": ""
+        },
+        {
+            "name": "StepperComponent",
+            "id": "component-StepperComponent-d6828f2438c0b29ad816f70c5f2235e1b4b7f225113f294647e8f3ba3d0a98246043df17fa289df968517bb6132f8ae5ae5de724584b7a85d573dffce9a1acb4",
+            "file": "src/app/stepper/stepper/stepper.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-stepper",
+            "styleUrls": [
+                "./stepper.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./stepper.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "count",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "change",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "decrement",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "increment",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'app-stepper',\n  templateUrl: './stepper.component.html',\n  styleUrls: ['./stepper.component.scss']\n})\nexport class StepperComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  @Input() count = 0\n  @Output() change = new EventEmitter()\n\n  increment(): void {\n    this.count++\n    this.change.emit(this.count)\n  }\n\n  decrement(): void {\n    this.count--\n    this.change.emit(this.count)\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./stepper.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div>\n  <button data-cy=\"decrement\" (click)=\"decrement()\">-</button>\n  <span data-cy=\"counter\">{{ count }}</span>\n  <button data-cy=\"increment\" (click)=\"increment()\">+</button>\n</div>"
         },
         {
             "name": "WelcomeComponent",
@@ -1966,6 +2090,15 @@
         "status": "low",
         "files": [
             {
+                "filePath": "cypress/support/component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Chainable",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/app.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2126,6 +2259,15 @@
                 "name": "DataItem",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/stepper/stepper/stepper.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "StepperComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
