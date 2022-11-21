@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "ColumnItem",
-            "id": "interface-ColumnItem-57c8d88e70bb38b3a244c3b87c007ea469645b2db59b2b01cf4bd9babc0fff310aec9bb0cf87286cfa8792011af4a5e4aba6f7043eb94b4f7e764aa1ce23cd58",
+            "id": "interface-ColumnItem-2fa3e1d842c73fe2952af68d1de02213cc946e6143f04b64edf9383cb08992cc3ef50fd8aa630448d08720f1e96b9cbbca2cfd55db6bb843164a6be6dc895845",
             "file": "src/app/pages/welcome/welcome.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport {\n  NzTableFilterFn,\n  NzTableFilterList,\n  NzTableSortFn,\n  NzTableSortOrder\n} from 'ng-zorro-antd/table';\n\ninterface DataItem {\n  name: string;\n  age: number;\n  address: string;\n}\n\ninterface ColumnItem {\n  name: string;\n  sortOrder: NzTableSortOrder | null;\n  sortFn: NzTableSortFn<DataItem> | null;\n  sortPriority: boolean | number;\n  listOfFilter: NzTableFilterList;\n  filterFn: NzTableFilterFn<DataItem> | null;\n  filterMultiple: boolean;\n  sortDirections: NzTableSortOrder[];\n}\n\n@Component({\n  selector: 'app-welcome',\n  templateUrl: './welcome.component.html',\n  styleUrls: ['./welcome.component.scss'],\n})\nexport class WelcomeComponent implements OnInit {\n  listOfColumns: ColumnItem[] = [\n    {\n      name: 'Name',\n      sortOrder: null,\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\n      sortDirections: ['ascend', 'descend', null],\n      sortPriority: 1,\n      filterMultiple: true,\n      listOfFilter: [\n        { text: 'Joe', value: 'Joe' },\n        { text: 'Jim', value: 'Jim', byDefault: true },\n      ],\n      filterFn: (list: string[], item: DataItem) =>\n        list.some((name) => item.name.indexOf(name) !== -1),\n    },\n    {\n      name: 'Age',\n      sortOrder: 'descend',\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\n      sortDirections: ['descend', null],\n      sortPriority: 3,\n      listOfFilter: [],\n      filterFn: null,\n      filterMultiple: true,\n    },\n    {\n      name: 'Address',\n      sortOrder: null,\n      sortDirections: ['ascend', 'descend', null],\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\n      sortPriority: 2,\n      filterMultiple: false,\n      listOfFilter: [\n        { text: 'London', value: 'London' },\n        { text: 'Sidney', value: 'Sidney' },\n      ],\n      filterFn: (address: string, item: DataItem) =>\n        item.address.indexOf(address) !== -1,\n    },\n  ];\n\n  listOfData: DataItem[] = [\n    {\n      name: 'John Brown',\n      age: 32,\n      address: 'New York No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Green',\n      age: 42,\n      address: 'London No. 1 Lake Park',\n    },\n    {\n      name: 'Joe Black',\n      age: 32,\n      address: 'Sidney No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Red',\n      age: 32,\n      address: 'London No. 2 Lake Park',\n    },\n  ];\n\n  listOfDisplayData = [...this.listOfData];\n\n  constructor() {}\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport {\r\n  NzTableFilterFn,\r\n  NzTableFilterList,\r\n  NzTableSortFn,\r\n  NzTableSortOrder\r\n} from 'ng-zorro-antd/table';\r\n\r\ninterface DataItem {\r\n  name: string;\r\n  age: number;\r\n  address: string;\r\n}\r\n\r\ninterface ColumnItem {\r\n  name: string;\r\n  sortOrder: NzTableSortOrder | null;\r\n  sortFn: NzTableSortFn<DataItem> | null;\r\n  sortPriority: boolean | number;\r\n  listOfFilter: NzTableFilterList;\r\n  filterFn: NzTableFilterFn<DataItem> | null;\r\n  filterMultiple: boolean;\r\n  sortDirections: NzTableSortOrder[];\r\n}\r\n\r\n@Component({\r\n  selector: 'app-welcome',\r\n  templateUrl: './welcome.component.html',\r\n  styleUrls: ['./welcome.component.scss'],\r\n})\r\nexport class WelcomeComponent implements OnInit {\r\n  listOfColumns: ColumnItem[] = [\r\n    {\r\n      name: 'Name',\r\n      sortOrder: null,\r\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortPriority: 1,\r\n      filterMultiple: true,\r\n      listOfFilter: [\r\n        { text: 'Joe', value: 'Joe' },\r\n        { text: 'Jim', value: 'Jim', byDefault: true },\r\n      ],\r\n      filterFn: (list: string[], item: DataItem) =>\r\n        list.some((name) => item.name.indexOf(name) !== -1),\r\n    },\r\n    {\r\n      name: 'Age',\r\n      sortOrder: 'descend',\r\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\r\n      sortDirections: ['descend', null],\r\n      sortPriority: 3,\r\n      listOfFilter: [],\r\n      filterFn: null,\r\n      filterMultiple: true,\r\n    },\r\n    {\r\n      name: 'Address',\r\n      sortOrder: null,\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\r\n      sortPriority: 2,\r\n      filterMultiple: false,\r\n      listOfFilter: [\r\n        { text: 'London', value: 'London' },\r\n        { text: 'Sidney', value: 'Sidney' },\r\n      ],\r\n      filterFn: (address: string, item: DataItem) =>\r\n        item.address.indexOf(address) !== -1,\r\n    },\r\n  ];\r\n\r\n  listOfData: DataItem[] = [\r\n    {\r\n      name: 'John Brown',\r\n      age: 32,\r\n      address: 'New York No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Green',\r\n      age: 42,\r\n      address: 'London No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Joe Black',\r\n      age: 32,\r\n      address: 'Sidney No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Red',\r\n      age: 32,\r\n      address: 'London No. 2 Lake Park',\r\n    },\r\n  ];\r\n\r\n  listOfDisplayData = [...this.listOfData];\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit() {}\r\n\r\n}\r\n",
             "properties": [
                 {
                     "name": "filterFn",
@@ -89,12 +89,12 @@
         },
         {
             "name": "DataItem",
-            "id": "interface-DataItem-57c8d88e70bb38b3a244c3b87c007ea469645b2db59b2b01cf4bd9babc0fff310aec9bb0cf87286cfa8792011af4a5e4aba6f7043eb94b4f7e764aa1ce23cd58",
+            "id": "interface-DataItem-2fa3e1d842c73fe2952af68d1de02213cc946e6143f04b64edf9383cb08992cc3ef50fd8aa630448d08720f1e96b9cbbca2cfd55db6bb843164a6be6dc895845",
             "file": "src/app/pages/welcome/welcome.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport {\n  NzTableFilterFn,\n  NzTableFilterList,\n  NzTableSortFn,\n  NzTableSortOrder\n} from 'ng-zorro-antd/table';\n\ninterface DataItem {\n  name: string;\n  age: number;\n  address: string;\n}\n\ninterface ColumnItem {\n  name: string;\n  sortOrder: NzTableSortOrder | null;\n  sortFn: NzTableSortFn<DataItem> | null;\n  sortPriority: boolean | number;\n  listOfFilter: NzTableFilterList;\n  filterFn: NzTableFilterFn<DataItem> | null;\n  filterMultiple: boolean;\n  sortDirections: NzTableSortOrder[];\n}\n\n@Component({\n  selector: 'app-welcome',\n  templateUrl: './welcome.component.html',\n  styleUrls: ['./welcome.component.scss'],\n})\nexport class WelcomeComponent implements OnInit {\n  listOfColumns: ColumnItem[] = [\n    {\n      name: 'Name',\n      sortOrder: null,\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\n      sortDirections: ['ascend', 'descend', null],\n      sortPriority: 1,\n      filterMultiple: true,\n      listOfFilter: [\n        { text: 'Joe', value: 'Joe' },\n        { text: 'Jim', value: 'Jim', byDefault: true },\n      ],\n      filterFn: (list: string[], item: DataItem) =>\n        list.some((name) => item.name.indexOf(name) !== -1),\n    },\n    {\n      name: 'Age',\n      sortOrder: 'descend',\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\n      sortDirections: ['descend', null],\n      sortPriority: 3,\n      listOfFilter: [],\n      filterFn: null,\n      filterMultiple: true,\n    },\n    {\n      name: 'Address',\n      sortOrder: null,\n      sortDirections: ['ascend', 'descend', null],\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\n      sortPriority: 2,\n      filterMultiple: false,\n      listOfFilter: [\n        { text: 'London', value: 'London' },\n        { text: 'Sidney', value: 'Sidney' },\n      ],\n      filterFn: (address: string, item: DataItem) =>\n        item.address.indexOf(address) !== -1,\n    },\n  ];\n\n  listOfData: DataItem[] = [\n    {\n      name: 'John Brown',\n      age: 32,\n      address: 'New York No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Green',\n      age: 42,\n      address: 'London No. 1 Lake Park',\n    },\n    {\n      name: 'Joe Black',\n      age: 32,\n      address: 'Sidney No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Red',\n      age: 32,\n      address: 'London No. 2 Lake Park',\n    },\n  ];\n\n  listOfDisplayData = [...this.listOfData];\n\n  constructor() {}\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport {\r\n  NzTableFilterFn,\r\n  NzTableFilterList,\r\n  NzTableSortFn,\r\n  NzTableSortOrder\r\n} from 'ng-zorro-antd/table';\r\n\r\ninterface DataItem {\r\n  name: string;\r\n  age: number;\r\n  address: string;\r\n}\r\n\r\ninterface ColumnItem {\r\n  name: string;\r\n  sortOrder: NzTableSortOrder | null;\r\n  sortFn: NzTableSortFn<DataItem> | null;\r\n  sortPriority: boolean | number;\r\n  listOfFilter: NzTableFilterList;\r\n  filterFn: NzTableFilterFn<DataItem> | null;\r\n  filterMultiple: boolean;\r\n  sortDirections: NzTableSortOrder[];\r\n}\r\n\r\n@Component({\r\n  selector: 'app-welcome',\r\n  templateUrl: './welcome.component.html',\r\n  styleUrls: ['./welcome.component.scss'],\r\n})\r\nexport class WelcomeComponent implements OnInit {\r\n  listOfColumns: ColumnItem[] = [\r\n    {\r\n      name: 'Name',\r\n      sortOrder: null,\r\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortPriority: 1,\r\n      filterMultiple: true,\r\n      listOfFilter: [\r\n        { text: 'Joe', value: 'Joe' },\r\n        { text: 'Jim', value: 'Jim', byDefault: true },\r\n      ],\r\n      filterFn: (list: string[], item: DataItem) =>\r\n        list.some((name) => item.name.indexOf(name) !== -1),\r\n    },\r\n    {\r\n      name: 'Age',\r\n      sortOrder: 'descend',\r\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\r\n      sortDirections: ['descend', null],\r\n      sortPriority: 3,\r\n      listOfFilter: [],\r\n      filterFn: null,\r\n      filterMultiple: true,\r\n    },\r\n    {\r\n      name: 'Address',\r\n      sortOrder: null,\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\r\n      sortPriority: 2,\r\n      filterMultiple: false,\r\n      listOfFilter: [\r\n        { text: 'London', value: 'London' },\r\n        { text: 'Sidney', value: 'Sidney' },\r\n      ],\r\n      filterFn: (address: string, item: DataItem) =>\r\n        item.address.indexOf(address) !== -1,\r\n    },\r\n  ];\r\n\r\n  listOfData: DataItem[] = [\r\n    {\r\n      name: 'John Brown',\r\n      age: 32,\r\n      address: 'New York No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Green',\r\n      age: 42,\r\n      address: 'London No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Joe Black',\r\n      age: 32,\r\n      address: 'Sidney No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Red',\r\n      age: 32,\r\n      address: 'London No. 2 Lake Park',\r\n    },\r\n  ];\r\n\r\n  listOfDisplayData = [...this.listOfData];\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit() {}\r\n\r\n}\r\n",
             "properties": [
                 {
                     "name": "address",
@@ -130,12 +130,12 @@
         },
         {
             "name": "User",
-            "id": "interface-User-9c7e5f1bbbab702cb032307d130876cb68969b0cd4eedef32a0c8cad8081a54e5f8f577ed6ad4539c1b99a1d246cb34031d198c2ea8eba440e64e91b14f01fdc",
+            "id": "interface-User-dcc5c3137cd472dd0002d85b562efd23162e3eff53ca4438a6251e6c46e3b8299076255380d1d42f386510cb6f2cbaab49fa5b5f253be459cdc3869428c5c400",
             "file": "src/stories/User.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface User {}\n",
+            "sourceCode": "export interface User {}\r\n",
             "properties": [],
             "indexSignatures": [],
             "methods": []
@@ -149,7 +149,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-7262215bb4320237bcd739dbfa3a6b6cbdbb672f07601d11f392e7a9e48fd2a0231ab4583299b596582b4a18aaa1e4faace80bee1b39559546f861f5fd273b58",
+            "id": "component-AppComponent-e894c6f6c761927a8c8dd09402097f875f8ad7eba0f811b8b20471a8a23c54292312f08afb1d669e6b088d9f9757e8a050e5455dfa9297a24a40f743199fe333",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -187,20 +187,20 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  isCollapsed = false;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  templateUrl: './app.component.html',\r\n  styleUrls: ['./app.component.scss']\r\n})\r\nexport class AppComponent {\r\n  isCollapsed = false;\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ":host {\n  display: flex;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.app-layout {\n  height: 100vh;\n}\n\n.menu-sidebar {\n  position: relative;\n  z-index: 10;\n  min-height: 100vh;\n  box-shadow: 2px 0 6px rgba(0,21,41,.35);\n}\n\n.header-trigger {\n  height: 64px;\n  padding: 20px 24px;\n  font-size: 20px;\n  cursor: pointer;\n  transition: all .3s,padding 0s;\n}\n\n.trigger:hover {\n  color: #1890ff;\n}\n\n.sidebar-logo {\n  position: relative;\n  height: 64px;\n  padding-left: 24px;\n  overflow: hidden;\n  line-height: 64px;\n  background: #001529;\n  transition: all .3s;\n}\n\n.sidebar-logo img {\n  display: inline-block;\n  height: 32px;\n  width: 32px;\n  vertical-align: middle;\n}\n\n.sidebar-logo h1 {\n  display: inline-block;\n  margin: 0 0 0 20px;\n  color: #fff;\n  font-weight: 600;\n  font-size: 14px;\n  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;\n  vertical-align: middle;\n}\n\nnz-header {\n  padding: 0;\n  width: 100%;\n  z-index: 2;\n}\n\n.app-header {\n  position: relative;\n  height: 64px;\n  padding: 0;\n  background: #fff;\n  box-shadow: 0 1px 4px rgba(0,21,41,.08);\n}\n\nnz-content {\n  margin: 24px;\n}\n\n.inner-content {\n  padding: 24px;\n  background: #fff;\n  height: 100%;\n}\n",
+                    "data": ":host {\r\n  display: flex;\r\n  text-rendering: optimizeLegibility;\r\n  -webkit-font-smoothing: antialiased;\r\n  -moz-osx-font-smoothing: grayscale;\r\n}\r\n\r\n.app-layout {\r\n  height: 100vh;\r\n}\r\n\r\n.menu-sidebar {\r\n  position: relative;\r\n  z-index: 10;\r\n  min-height: 100vh;\r\n  box-shadow: 2px 0 6px rgba(0,21,41,.35);\r\n}\r\n\r\n.header-trigger {\r\n  height: 64px;\r\n  padding: 20px 24px;\r\n  font-size: 20px;\r\n  cursor: pointer;\r\n  transition: all .3s,padding 0s;\r\n}\r\n\r\n.trigger:hover {\r\n  color: #1890ff;\r\n}\r\n\r\n.sidebar-logo {\r\n  position: relative;\r\n  height: 64px;\r\n  padding-left: 24px;\r\n  overflow: hidden;\r\n  line-height: 64px;\r\n  background: #001529;\r\n  transition: all .3s;\r\n}\r\n\r\n.sidebar-logo img {\r\n  display: inline-block;\r\n  height: 32px;\r\n  width: 32px;\r\n  vertical-align: middle;\r\n}\r\n\r\n.sidebar-logo h1 {\r\n  display: inline-block;\r\n  margin: 0 0 0 20px;\r\n  color: #fff;\r\n  font-weight: 600;\r\n  font-size: 14px;\r\n  font-family: Avenir,Helvetica Neue,Arial,Helvetica,sans-serif;\r\n  vertical-align: middle;\r\n}\r\n\r\nnz-header {\r\n  padding: 0;\r\n  width: 100%;\r\n  z-index: 2;\r\n}\r\n\r\n.app-header {\r\n  position: relative;\r\n  height: 64px;\r\n  padding: 0;\r\n  background: #fff;\r\n  box-shadow: 0 1px 4px rgba(0,21,41,.08);\r\n}\r\n\r\nnz-content {\r\n  margin: 24px;\r\n}\r\n\r\n.inner-content {\r\n  padding: 24px;\r\n  background: #fff;\r\n  height: 100%;\r\n}\r\n",
                     "styleUrl": "./app.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<nz-layout class=\"app-layout\">\n  <nz-sider class=\"menu-sidebar\"\n            nzCollapsible\n            nzWidth=\"256px\"\n            nzBreakpoint=\"md\"\n            [(nzCollapsed)]=\"isCollapsed\"\n            [nzTrigger]=\"null\">\n    <div class=\"sidebar-logo\">\n      <a href=\"https://ng.ant.design/\" target=\"_blank\">\n        <img src=\"https://ng.ant.design/assets/img/logo.svg\" alt=\"logo\">\n        <h1>Ant Design Of Angular</h1>\n      </a>\n    </div>\n    <ul nz-menu nzTheme=\"dark\" nzMode=\"inline\" [nzInlineCollapsed]=\"isCollapsed\">\n      <li nz-submenu nzOpen nzTitle=\"Dashboard\" nzIcon=\"dashboard\">\n        <ul>\n          <li nz-menu-item nzMatchRouter>\n            <a routerLink=\"/welcome\">Welcome</a>\n          </li>\n          <li nz-menu-item nzMatchRouter>\n            <a routerLink=\"/monitor\">Monitor</a>\n          </li>\n        </ul>\n      </li>\n      <li nz-submenu nzOpen nzTitle=\"Form\" nzIcon=\"form\">\n        <ul>\n          <li nz-menu-item nzMatchRouter>\n            <a routerLink=\"/my-form\">Basic Form</a>\n          </li>\n        </ul>\n      </li>\n    </ul>\n  </nz-sider>\n  <nz-layout>\n    <nz-header>\n      <div class=\"app-header\">\n        <span class=\"header-trigger\" (click)=\"isCollapsed = !isCollapsed\">\n            <span class=\"trigger\"\n               nz-icon\n               [nzType]=\"isCollapsed ? 'menu-unfold' : 'menu-fold'\"\n            ></span>\n        </span>\n      </div>\n    </nz-header>\n    <nz-content>\n      <div class=\"inner-content\">\n        <router-outlet></router-outlet>\n      </div>\n    </nz-content>\n  </nz-layout>\n</nz-layout>\n"
+            "templateData": "<nz-layout class=\"app-layout\">\r\n  <nz-sider class=\"menu-sidebar\"\r\n            nzCollapsible\r\n            nzWidth=\"256px\"\r\n            nzBreakpoint=\"md\"\r\n            [(nzCollapsed)]=\"isCollapsed\"\r\n            [nzTrigger]=\"null\">\r\n    <div class=\"sidebar-logo\">\r\n      <a href=\"https://ng.ant.design/\" target=\"_blank\">\r\n        <img src=\"https://ng.ant.design/assets/img/logo.svg\" alt=\"logo\">\r\n        <h1>Ant Design Of Angular</h1>\r\n      </a>\r\n    </div>\r\n    <ul nz-menu nzTheme=\"dark\" nzMode=\"inline\" [nzInlineCollapsed]=\"isCollapsed\">\r\n      <li nz-submenu nzOpen nzTitle=\"Dashboard\" nzIcon=\"dashboard\">\r\n        <ul>\r\n          <li nz-menu-item nzMatchRouter>\r\n            <a routerLink=\"/welcome\">Welcome</a>\r\n          </li>\r\n          <li nz-menu-item nzMatchRouter>\r\n            <a routerLink=\"/monitor\">Monitor</a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n      <li nz-submenu nzOpen nzTitle=\"Form\" nzIcon=\"form\">\r\n        <ul>\r\n          <li nz-menu-item nzMatchRouter>\r\n            <a routerLink=\"/my-form\">Basic Form</a>\r\n          </li>\r\n        </ul>\r\n      </li>\r\n    </ul>\r\n  </nz-sider>\r\n  <nz-layout>\r\n    <nz-header>\r\n      <div class=\"app-header\">\r\n        <span class=\"header-trigger\" (click)=\"isCollapsed = !isCollapsed\">\r\n            <span class=\"trigger\"\r\n               nz-icon\r\n               [nzType]=\"isCollapsed ? 'menu-unfold' : 'menu-fold'\"\r\n            ></span>\r\n        </span>\r\n      </div>\r\n    </nz-header>\r\n    <nz-content>\r\n      <div class=\"inner-content\">\r\n        <router-outlet></router-outlet>\r\n      </div>\r\n    </nz-content>\r\n  </nz-layout>\r\n</nz-layout>\r\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-4ef205c97a334c309aa4001c8ab4a6d9571dcae18d0e85aaf0d367467ab5d3a9f13ab3573726f1fcb409bc9b49894dadfb80b1bbe1b6ba7041455ad9d4922004",
+            "id": "component-ButtonComponent-8ceaf520f96e5437b08eeda244d84efb29effe62ddca4fc38eaa229085c2a1126c5715e61445bae741505aca1e4d377b350cb05fadd1dc45d9b2bbf7527029f1",
             "file": "src/stories/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -233,15 +233,15 @@
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
-                            "pos": 711,
-                            "end": 724,
+                            "pos": 747,
+                            "end": 761,
                             "flags": 4227072,
                             "modifierFlagsCache": 0,
                             "transformFlags": 0,
                             "kind": 325,
                             "tagName": {
-                                "pos": 712,
-                                "end": 720,
+                                "pos": 748,
+                                "end": 756,
                                 "flags": 4227072,
                                 "modifierFlagsCache": 0,
                                 "transformFlags": 0,
@@ -301,11 +301,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'storybook-button',\r\n  template: ` <button\r\n    type=\"button\"\r\n    (click)=\"onClick.emit($event)\"\r\n    [ngClass]=\"classes\"\r\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  >\r\n    {{ label }}\r\n  </button>`,\r\n  styleUrls: ['./button.css'],\r\n})\r\nexport default class ButtonComponent {\r\n  /**\r\n   * Is this the principal call to action on the page?\r\n   */\r\n  @Input()\r\n  primary = false;\r\n\r\n  /**\r\n   * What background color to use\r\n   */\r\n  @Input()\r\n  backgroundColor?: string;\r\n\r\n  /**\r\n   * How large should the button be?\r\n   */\r\n  @Input()\r\n  size: 'small' | 'medium' | 'large' = 'medium';\r\n\r\n  /**\r\n   * Button contents\r\n   *\r\n   * @required\r\n   */\r\n  @Input()\r\n  label = 'Button';\r\n\r\n  /**\r\n   * Optional click handler\r\n   */\r\n  @Output()\r\n  onClick = new EventEmitter<Event>();\r\n\r\n  public get classes(): string[] {\r\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\r\n\r\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "data": ".storybook-button {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-weight: 700;\r\n  border: 0;\r\n  border-radius: 3em;\r\n  cursor: pointer;\r\n  display: inline-block;\r\n  line-height: 1;\r\n}\r\n.storybook-button--primary {\r\n  color: white;\r\n  background-color: #1ea7fd;\r\n}\r\n.storybook-button--secondary {\r\n  color: #333;\r\n  background-color: transparent;\r\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\r\n}\r\n.storybook-button--small {\r\n  font-size: 12px;\r\n  padding: 10px 16px;\r\n}\r\n.storybook-button--medium {\r\n  font-size: 14px;\r\n  padding: 11px 20px;\r\n}\r\n.storybook-button--large {\r\n  font-size: 16px;\r\n  padding: 12px 24px;\r\n}\r\n",
                     "styleUrl": "./button.css"
                 }
             ],
@@ -324,7 +324,7 @@
         },
         {
             "name": "ButtonSubmitComponent",
-            "id": "component-ButtonSubmitComponent-e75bfd2eda86ece955de4be72fe247f1395da259f2e790c54af6f5e7a8622b2f0fe88e6d6eabadff84b5ee5e27167e44b2fc0674e7daed2d3420e46c6175dbf6",
+            "id": "component-ButtonSubmitComponent-17f52c8630c5c0ab3503715b6cbea088bfd80b65df1059863aeec6aebec32b81ff7a7e91787d800b18f172a043e8bf958bf45539152b1d4c8a238120750393af",
             "file": "src/app/pages/my-form/button-submit/button-submit.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -408,7 +408,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'button-submit',\n  templateUrl: './button-submit.component.html',\n  styleUrls: ['./button-submit.component.scss']\n})\nexport class ButtonSubmitComponent implements OnInit {\n  @Input() text: string = 'Submit';\n  @Input() type: 'primary' | 'secondary' = 'primary';\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\n  @Input() disabled: boolean = false;\n  @Input() loading: boolean = false;\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  public get classes(): string[] {\n    return [`storybook-button--${this.size}`, `storybook-button--${this.type}`];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'button-submit',\r\n  templateUrl: './button-submit.component.html',\r\n  styleUrls: ['./button-submit.component.scss']\r\n})\r\nexport class ButtonSubmitComponent implements OnInit {\r\n  @Input() text: string = 'Submit';\r\n  @Input() type: 'primary' | 'secondary' = 'primary';\r\n  @Input() size: 'small' | 'medium' | 'large' = 'medium';\r\n  @Input() disabled: boolean = false;\r\n  @Input() loading: boolean = false;\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  public get classes(): string[] {\r\n    return [`storybook-button--${this.size}`, `storybook-button--${this.type}`];\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -443,7 +443,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-a557eec14f72c438a8033301f4d6ce023e0a1844a3b06ec2b38794a612acc31735ae78a5ee10071b230c8c20d699eb914554e69d07ade54adb371da8efb464cc",
+            "id": "component-HeaderComponent-bda17aa3451a9f731685153f2587877b8267c32007f05e7abad3581336e6bc02346a1b660e8c69c4d90b4526b6e047b3ac1f4246252c9dc83985c9148aab5e97",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -504,11 +504,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            primary\n            size=\"small\"\n            primary=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  template: `<header>\r\n    <div class=\"wrapper\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            primary\r\n            size=\"small\"\r\n            primary=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport default class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n\n.welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "data": ".wrapper {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\r\n  padding: 15px 20px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n}\r\n\r\nsvg {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nh1 {\r\n  font-weight: 900;\r\n  font-size: 20px;\r\n  line-height: 1;\r\n  margin: 6px 0 6px 10px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nbutton + button {\r\n  margin-left: 10px;\r\n}\r\n\r\n.welcome {\r\n  color: #333;\r\n  font-size: 14px;\r\n  margin-right: 10px;\r\n}\r\n",
                     "styleUrl": "./header.css"
                 }
             ],
@@ -516,7 +516,7 @@
         },
         {
             "name": "MonitorComponent",
-            "id": "component-MonitorComponent-1adaee4119394de877518547e93071eb4abc732c4f70c73f16c01124db7bd5afa00f0226d4df1e0d3bcfae6d5dc932854ca588711da1e6333eb29ee5a1508963",
+            "id": "component-MonitorComponent-5e601823c0165bde2ba254ed51923d47864023533027ae23c993c2e2635e5603ed4e68804c30afe315f2953ff4c53a1572cc9c3422f4ee3491a67a11739b1739",
             "file": "src/app/pages/monitor/monitor.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -537,7 +537,7 @@
             "propertiesClass": [
                 {
                     "name": "data",
-                    "defaultValue": "{\n    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\n    datasets: [\n      {\n        label: 'My First dataset',\n        backgroundColor: 'rgba(220, 220, 220, 0.2)',\n        borderColor: 'rgba(220, 220, 220, 1)',\n        pointBackgroundColor: 'rgba(220, 220, 220, 1)',\n        pointBorderColor: '#fff',\n        data: [40, 20, 12, 39, 10, 80, 40]\n      },\n      {\n        label: 'My Second dataset',\n        backgroundColor: 'rgba(151, 187, 205, 0.2)',\n        borderColor: 'rgba(151, 187, 205, 1)',\n        pointBackgroundColor: 'rgba(151, 187, 205, 1)',\n        pointBorderColor: '#fff',\n        data: [50, 12, 28, 29, 7, 25, 60]\n      }\n    ]\n  }",
+                    "defaultValue": "{\r\n    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\r\n    datasets: [\r\n      {\r\n        label: 'My First dataset',\r\n        backgroundColor: 'rgba(220, 220, 220, 0.2)',\r\n        borderColor: 'rgba(220, 220, 220, 1)',\r\n        pointBackgroundColor: 'rgba(220, 220, 220, 1)',\r\n        pointBorderColor: '#fff',\r\n        data: [40, 20, 12, 39, 10, 80, 40]\r\n      },\r\n      {\r\n        label: 'My Second dataset',\r\n        backgroundColor: 'rgba(151, 187, 205, 0.2)',\r\n        borderColor: 'rgba(151, 187, 205, 1)',\r\n        pointBackgroundColor: 'rgba(151, 187, 205, 1)',\r\n        pointBorderColor: '#fff',\r\n        data: [50, 12, 28, 29, 7, 25, 60]\r\n      }\r\n    ]\r\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
@@ -565,7 +565,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-monitor',\n  templateUrl: './monitor.component.html',\n  styleUrls: ['./monitor.component.scss']\n})\nexport class MonitorComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n  data = {\n    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\n    datasets: [\n      {\n        label: 'My First dataset',\n        backgroundColor: 'rgba(220, 220, 220, 0.2)',\n        borderColor: 'rgba(220, 220, 220, 1)',\n        pointBackgroundColor: 'rgba(220, 220, 220, 1)',\n        pointBorderColor: '#fff',\n        data: [40, 20, 12, 39, 10, 80, 40]\n      },\n      {\n        label: 'My Second dataset',\n        backgroundColor: 'rgba(151, 187, 205, 0.2)',\n        borderColor: 'rgba(151, 187, 205, 1)',\n        pointBackgroundColor: 'rgba(151, 187, 205, 1)',\n        pointBorderColor: '#fff',\n        data: [50, 12, 28, 29, 7, 25, 60]\n      }\n    ]\n  };\n\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\n\r\n@Component({\r\n  selector: 'app-monitor',\r\n  templateUrl: './monitor.component.html',\r\n  styleUrls: ['./monitor.component.scss']\r\n})\r\nexport class MonitorComponent implements OnInit {\r\n\r\n  constructor() { }\r\n\r\n  ngOnInit(): void {\r\n  }\r\n\r\n  data = {\r\n    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],\r\n    datasets: [\r\n      {\r\n        label: 'My First dataset',\r\n        backgroundColor: 'rgba(220, 220, 220, 0.2)',\r\n        borderColor: 'rgba(220, 220, 220, 1)',\r\n        pointBackgroundColor: 'rgba(220, 220, 220, 1)',\r\n        pointBorderColor: '#fff',\r\n        data: [40, 20, 12, 39, 10, 80, 40]\r\n      },\r\n      {\r\n        label: 'My Second dataset',\r\n        backgroundColor: 'rgba(151, 187, 205, 0.2)',\r\n        borderColor: 'rgba(151, 187, 205, 1)',\r\n        pointBackgroundColor: 'rgba(151, 187, 205, 1)',\r\n        pointBorderColor: '#fff',\r\n        data: [50, 12, 28, 29, 7, 25, 60]\r\n      }\r\n    ]\r\n  };\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -589,7 +589,7 @@
         },
         {
             "name": "MyFormComponent",
-            "id": "component-MyFormComponent-8c12616fab20bbe09cb02704fc179495c27238e270fe1e5e91982ca6f7612e7f15f044cdfc7c56e66e67e568b5e3661e47a9ee7d94ab292517aa96f17cd097d0",
+            "id": "component-MyFormComponent-d1529571a358fd87cbdc9a96fb9ae5936bd04688bbb26097bf778d892e2977c92e526c80840f75cf0f9f685cd0bd8a7b17f8ef5655e1eac5d4ba110b3302d451",
             "file": "src/app/pages/my-form/my-form.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -610,7 +610,7 @@
             "propertiesClass": [
                 {
                     "name": "captchaTooltipIcon",
-                    "defaultValue": "{\n    type: 'info-circle',\n    theme: 'twotone',\n  }",
+                    "defaultValue": "{\r\n    type: 'info-circle',\r\n    theme: 'twotone',\r\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "NzFormTooltipIcon",
@@ -705,7 +705,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';\nimport { NzFormTooltipIcon } from 'ng-zorro-antd/form';\n// import { registerLocaleData } from '@angular/common';\n// import es from '@angular/common/locales/es';\n\n// registerLocaleData(es);\n\n@Component({\n  selector: 'app-my-form',\n  templateUrl: './my-form.component.html',\n  styleUrls: ['./my-form.component.scss'],\n})\nexport class MyFormComponent implements OnInit {\n  validateForm!: FormGroup;\n  captchaTooltipIcon: NzFormTooltipIcon = {\n    type: 'info-circle',\n    theme: 'twotone',\n  };\n\n  constructor(private fb: FormBuilder) {}\n\n  ngOnInit(): void {\n    this.validateForm = this.fb.group({\n      email: ['', [Validators.email, Validators.required]],\n      password: ['', [Validators.required]],\n      checkPassword: ['', [Validators.required, this.confirmationValidator]],\n      nickname: ['', [Validators.required]],\n      date: [null, [Validators.required]],\n      phoneNumberPrefix: ['+86'],\n      phoneNumber: ['', [Validators.required]],\n      website: ['', [Validators.required]],\n      captcha: ['', [Validators.required]],\n      agree: [false],\n    });\n  }\n\n  submitForm(): void {\n    if (this.validateForm.valid) {\n      console.log('submit', this.validateForm.value);\n    } else {\n      Object.values(this.validateForm.controls).forEach((control) => {\n        if (control.invalid) {\n          control.markAsDirty();\n          control.updateValueAndValidity({ onlySelf: true });\n        }\n      });\n    }\n  }\n\n  updateConfirmValidator(): void {\n    /** wait for refresh value */\n    Promise.resolve().then(() =>\n      this.validateForm.controls['checkPassword'].updateValueAndValidity()\n    );\n  }\n\n  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {\n    if (!control.value) {\n      return { required: true };\n    } else if (control.value !== this.validateForm.controls['password'].value) {\n      return { confirm: true, error: true };\n    }\n    return {};\n  };\n\n  getCaptcha(e: MouseEvent): void {\n    e.preventDefault();\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\r\nimport { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';\r\nimport { NzFormTooltipIcon } from 'ng-zorro-antd/form';\r\n// import { registerLocaleData } from '@angular/common';\r\n// import es from '@angular/common/locales/es';\r\n\r\n// registerLocaleData(es);\r\n\r\n@Component({\r\n  selector: 'app-my-form',\r\n  templateUrl: './my-form.component.html',\r\n  styleUrls: ['./my-form.component.scss'],\r\n})\r\nexport class MyFormComponent implements OnInit {\r\n  validateForm!: FormGroup;\r\n  captchaTooltipIcon: NzFormTooltipIcon = {\r\n    type: 'info-circle',\r\n    theme: 'twotone',\r\n  };\r\n\r\n  constructor(private fb: FormBuilder) {}\r\n\r\n  ngOnInit(): void {\r\n    this.validateForm = this.fb.group({\r\n      email: ['', [Validators.email, Validators.required]],\r\n      password: ['', [Validators.required]],\r\n      checkPassword: ['', [Validators.required, this.confirmationValidator]],\r\n      nickname: ['', [Validators.required]],\r\n      date: [null, [Validators.required]],\r\n      phoneNumberPrefix: ['+86'],\r\n      phoneNumber: ['', [Validators.required]],\r\n      website: ['', [Validators.required]],\r\n      captcha: ['', [Validators.required]],\r\n      agree: [false],\r\n    });\r\n  }\r\n\r\n  submitForm(): void {\r\n    if (this.validateForm.valid) {\r\n      console.log('submit', this.validateForm.value);\r\n    } else {\r\n      Object.values(this.validateForm.controls).forEach((control) => {\r\n        if (control.invalid) {\r\n          control.markAsDirty();\r\n          control.updateValueAndValidity({ onlySelf: true });\r\n        }\r\n      });\r\n    }\r\n  }\r\n\r\n  updateConfirmValidator(): void {\r\n    /** wait for refresh value */\r\n    Promise.resolve().then(() =>\r\n      this.validateForm.controls['checkPassword'].updateValueAndValidity()\r\n    );\r\n  }\r\n\r\n  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {\r\n    if (!control.value) {\r\n      return { required: true };\r\n    } else if (control.value !== this.validateForm.controls['password'].value) {\r\n      return { confirm: true, error: true };\r\n    }\r\n    return {};\r\n  };\r\n\r\n  getCaptcha(e: MouseEvent): void {\r\n    e.preventDefault();\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -743,11 +743,11 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<form nz-form [formGroup]=\"validateForm\" (ngSubmit)=\"submitForm()\">\n  <nz-form-item>\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzRequired nzFor=\"email\">E-mail</nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"The input is not valid E-mail!\">\n      <input title=\"email\" placeholder=\"email\" nz-input formControlName=\"email\" id=\"email\" />\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"password\" nzRequired>Password</nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input your password!\">\n      <input\n        nz-input\n        title=\"password\"\n        placeholder=\"password\"\n        type=\"password\"\n        id=\"password\"\n        formControlName=\"password\"\n        (ngModelChange)=\"updateConfirmValidator()\"\n      />\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"checkPassword\" nzRequired>Confirm Password</nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" [nzErrorTip]=\"errorTpl\">\n      <input title=\"checkPassword\" placeholder=\"checkPassword\" nz-input type=\"password\" formControlName=\"checkPassword\" id=\"checkPassword\" />\n      <ng-template #errorTpl let-control>\n        <ng-container *ngIf=\"control.hasError('required')\">Please confirm your password!</ng-container>\n        <ng-container *ngIf=\"control.hasError('confirm')\">\n          Two passwords that you enter is inconsistent!\n        </ng-container>\n      </ng-template>\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label\n      [nzSm]=\"6\"\n      [nzXs]=\"24\"\n      nzFor=\"nickname\"\n      nzRequired\n      nzTooltipTitle=\"What do you want other to call you\"\n    >\n      <span>Nickname</span>\n    </nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input your nickname!\">\n      <input placeholder=\"Your nickname\" nz-input id=\"nickname\" formControlName=\"nickname\" />\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzRequired>Date</nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input a date!\">\n      <nz-date-picker nzPlaceHolder=\"2022-12-24\" formControlName=\"date\"></nz-date-picker>\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item nz-row>\n    <nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"phoneNumber\" nzRequired>Phone Number</nz-form-label>\n    <nz-form-control\n      nz-col\n      [nzSm]=\"14\"\n      [nzXs]=\"24\"\n      [nzValidateStatus]=\"validateForm.controls['phoneNumber']\"\n      nzErrorTip=\"Please input your phone number!\"\n    >\n      <nz-input-group [nzAddOnBefore]=\"addOnBeforeTemplate\">\n        <ng-template #addOnBeforeTemplate>\n          <nz-select formControlName=\"phoneNumberPrefix\" class=\"phone-select\">\n            <nz-option nzLabel=\"+86\" nzValue=\"+86\"></nz-option>\n            <nz-option nzLabel=\"+87\" nzValue=\"+87\"></nz-option>\n          </nz-select>\n        </ng-template>\n        <input title=\"phoneNumber\" placeholder=\"phoneNumber\" formControlName=\"phoneNumber\" id=\"phoneNumber\" nz-input />\n      </nz-input-group>\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"website\" nzRequired>Website</nz-form-label>\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input website!\">\n      <input nz-input id=\"website\" formControlName=\"website\" placeholder=\"website\" />\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item>\n    <nz-form-label\n      [nzSm]=\"6\"\n      [nzXs]=\"24\"\n      nzFor=\"captcha\"\n      nzRequired\n      nzTooltipTitle=\"Please click 'Get captcha'\"\n      [nzTooltipIcon]=\"captchaTooltipIcon\"\n    >\n      Captcha\n    </nz-form-label>\n    <nz-form-control\n      [nzSm]=\"14\"\n      [nzXs]=\"24\"\n      nzErrorTip=\"Please input the captcha you got!\"\n      nzExtra=\"We must make sure that your are a human.\"\n    >\n      <div nz-row [nzGutter]=\"8\">\n        <div nz-col [nzSpan]=\"12\">\n          <input title=\"captcha\" placeholder=\"captcha\" nz-input formControlName=\"captcha\" id=\"captcha\" />\n        </div>\n        <div nz-col [nzSpan]=\"12\">\n          <button nz-button (click)=\"getCaptcha($event)\">Get captcha</button>\n        </div>\n      </div>\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item nz-row class=\"register-area\">\n    <nz-form-control [nzSpan]=\"14\" [nzOffset]=\"6\">\n      <label nz-checkbox formControlName=\"agree\">\n        <span>\n          I have read the\n          <a>agreement</a>\n        </span>\n      </label>\n    </nz-form-control>\n  </nz-form-item>\n  <nz-form-item nz-row class=\"register-area\">\n    <nz-form-control [nzSpan]=\"14\" [nzOffset]=\"6\">\n      <!-- <button nz-button nzType=\"primary\">Register</button> -->\n      <button-submit [text]=\"'Register'\" ></button-submit>\n      <button-submit [text]=\"'Register'\" [type]=\"'secondary'\" [size]=\"'small'\" ></button-submit>\n      <button-submit [text]=\"'Register'\" [size]=\"'large'\" [disabled]=\"true\" ></button-submit>\n      <button-submit [text]=\"'Register'\" [loading]=\"true\" ></button-submit>\n    </nz-form-control>\n  </nz-form-item>\n</form>"
+            "templateData": "<form nz-form [formGroup]=\"validateForm\" (ngSubmit)=\"submitForm()\">\r\n  <nz-form-item>\r\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzRequired nzFor=\"email\">E-mail</nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"The input is not valid E-mail!\">\r\n      <input title=\"email\" placeholder=\"email\" nz-input formControlName=\"email\" id=\"email\" />\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"password\" nzRequired>Password</nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input your password!\">\r\n      <input\r\n        nz-input\r\n        title=\"password\"\r\n        placeholder=\"password\"\r\n        type=\"password\"\r\n        id=\"password\"\r\n        formControlName=\"password\"\r\n        (ngModelChange)=\"updateConfirmValidator()\"\r\n      />\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"checkPassword\" nzRequired>Confirm Password</nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" [nzErrorTip]=\"errorTpl\">\r\n      <input title=\"checkPassword\" placeholder=\"checkPassword\" nz-input type=\"password\" formControlName=\"checkPassword\" id=\"checkPassword\" />\r\n      <ng-template #errorTpl let-control>\r\n        <ng-container *ngIf=\"control.hasError('required')\">Please confirm your password!</ng-container>\r\n        <ng-container *ngIf=\"control.hasError('confirm')\">\r\n          Two passwords that you enter is inconsistent!\r\n        </ng-container>\r\n      </ng-template>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label\r\n      [nzSm]=\"6\"\r\n      [nzXs]=\"24\"\r\n      nzFor=\"nickname\"\r\n      nzRequired\r\n      nzTooltipTitle=\"What do you want other to call you\"\r\n    >\r\n      <span>Nickname</span>\r\n    </nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input your nickname!\">\r\n      <input placeholder=\"Your nickname\" nz-input id=\"nickname\" formControlName=\"nickname\" />\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzRequired>Date</nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input a date!\">\r\n      <nz-date-picker nzPlaceHolder=\"2022-12-24\" formControlName=\"date\"></nz-date-picker>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item nz-row>\r\n    <nz-form-label nz-col [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"phoneNumber\" nzRequired>Phone Number</nz-form-label>\r\n    <nz-form-control\r\n      nz-col\r\n      [nzSm]=\"14\"\r\n      [nzXs]=\"24\"\r\n      [nzValidateStatus]=\"validateForm.controls['phoneNumber']\"\r\n      nzErrorTip=\"Please input your phone number!\"\r\n    >\r\n      <nz-input-group [nzAddOnBefore]=\"addOnBeforeTemplate\">\r\n        <ng-template #addOnBeforeTemplate>\r\n          <nz-select formControlName=\"phoneNumberPrefix\" class=\"phone-select\">\r\n            <nz-option nzLabel=\"+86\" nzValue=\"+86\"></nz-option>\r\n            <nz-option nzLabel=\"+87\" nzValue=\"+87\"></nz-option>\r\n          </nz-select>\r\n        </ng-template>\r\n        <input title=\"phoneNumber\" placeholder=\"phoneNumber\" formControlName=\"phoneNumber\" id=\"phoneNumber\" nz-input />\r\n      </nz-input-group>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label [nzSm]=\"6\" [nzXs]=\"24\" nzFor=\"website\" nzRequired>Website</nz-form-label>\r\n    <nz-form-control [nzSm]=\"14\" [nzXs]=\"24\" nzErrorTip=\"Please input website!\">\r\n      <input nz-input id=\"website\" formControlName=\"website\" placeholder=\"website\" />\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item>\r\n    <nz-form-label\r\n      [nzSm]=\"6\"\r\n      [nzXs]=\"24\"\r\n      nzFor=\"captcha\"\r\n      nzRequired\r\n      nzTooltipTitle=\"Please click 'Get captcha'\"\r\n      [nzTooltipIcon]=\"captchaTooltipIcon\"\r\n    >\r\n      Captcha\r\n    </nz-form-label>\r\n    <nz-form-control\r\n      [nzSm]=\"14\"\r\n      [nzXs]=\"24\"\r\n      nzErrorTip=\"Please input the captcha you got!\"\r\n      nzExtra=\"We must make sure that your are a human.\"\r\n    >\r\n      <div nz-row [nzGutter]=\"8\">\r\n        <div nz-col [nzSpan]=\"12\">\r\n          <input title=\"captcha\" placeholder=\"captcha\" nz-input formControlName=\"captcha\" id=\"captcha\" />\r\n        </div>\r\n        <div nz-col [nzSpan]=\"12\">\r\n          <button nz-button (click)=\"getCaptcha($event)\">Get captcha</button>\r\n        </div>\r\n      </div>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item nz-row class=\"register-area\">\r\n    <nz-form-control [nzSpan]=\"14\" [nzOffset]=\"6\">\r\n      <label nz-checkbox formControlName=\"agree\">\r\n        <span>\r\n          I have read the\r\n          <a>agreement</a>\r\n        </span>\r\n      </label>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n  <nz-form-item nz-row class=\"register-area\">\r\n    <nz-form-control [nzSpan]=\"14\" [nzOffset]=\"6\">\r\n      <!-- <button nz-button nzType=\"primary\">Register</button> -->\r\n      <button-submit [text]=\"'Register'\" ></button-submit>\r\n      <button-submit [text]=\"'Register'\" [type]=\"'secondary'\" [size]=\"'small'\" ></button-submit>\r\n      <button-submit [text]=\"'Register'\" [size]=\"'large'\" [disabled]=\"true\" ></button-submit>\r\n      <button-submit [text]=\"'Register'\" [loading]=\"true\" ></button-submit>\r\n    </nz-form-control>\r\n  </nz-form-item>\r\n</form>"
         },
         {
             "name": "PageComponent",
-            "id": "component-PageComponent-7126d8c2607c946741c651482413b43feb72b2d63cac9d3ac173fde206a5e635eb4cdbf7ca7ac9327c7d4d05cf7ef619144c34c11609ad677081d0ee4e855064",
+            "id": "component-PageComponent-1fc7c24c98b4f0b0f413d91f5a6126f11ad55647457f5a7f372b7f83fe8ecd6dbe67b5ca4b826ed20b9bfbc04d5606b15f82a203b1311f98b18bd28ec9f4fc7c",
             "file": "src/stories/page.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -815,11 +815,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { User } from './User';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { User } from './User';\r\n\r\n@Component({\r\n  selector: 'storybook-page',\r\n  template: `<article>\r\n    <storybook-header\r\n      [user]=\"user\"\r\n      (onLogout)=\"doLogout()\"\r\n      (onLogin)=\"doLogin()\"\r\n      (onCreateAccount)=\"doCreateAccount()\"\r\n    ></storybook-header>\r\n    <section>\r\n      <h2>Pages in Storybook</h2>\r\n      <p>\r\n        We recommend building UIs with a\r\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          <strong>component-driven</strong>\r\n        </a>\r\n        process starting with atomic components and ending with pages.\r\n      </p>\r\n      <p>\r\n        Render pages with mock data. This makes it easy to build and review page states without\r\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\r\n        in Storybook:\r\n      </p>\r\n      <ul>\r\n        <li>\r\n          Use a higher-level connected component. Storybook helps you compose such data from the\r\n          \"args\" of child component stories\r\n        </li>\r\n        <li>\r\n          Assemble data in the page component from your services. You can mock these services out\r\n          using Storybook.\r\n        </li>\r\n      </ul>\r\n      <p>\r\n        Get a guided tutorial on component-driven development at\r\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\r\n          Storybook tutorials\r\n        </a>\r\n        . Read more in the\r\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\r\n        .\r\n      </p>\r\n      <div class=\"tip-wrapper\">\r\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\r\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\r\n              id=\"a\"\r\n              fill=\"#999\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        Viewports addon in the toolbar\r\n      </div>\r\n    </section>\r\n  </article>`,\r\n  styleUrls: ['./page.css'],\r\n})\r\nexport default class PageComponent {\r\n  user: User | null = null;\r\n\r\n  doLogout() {\r\n    this.user = null;\r\n  }\r\n\r\n  doLogin() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n\r\n  doCreateAccount() {\r\n    this.user = { name: 'Jane Doe' };\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nsection h2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nsection p {\n  margin: 1em 0;\n}\n\nsection a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nsection ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nsection li {\n  margin-bottom: 8px;\n}\n\nsection .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\nsection .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\nsection .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\nsection .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "data": "section {\r\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\r\n  font-size: 14px;\r\n  line-height: 24px;\r\n  padding: 48px 20px;\r\n  margin: 0 auto;\r\n  max-width: 600px;\r\n  color: #333;\r\n}\r\n\r\nsection h2 {\r\n  font-weight: 900;\r\n  font-size: 32px;\r\n  line-height: 1;\r\n  margin: 0 0 4px;\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\nsection p {\r\n  margin: 1em 0;\r\n}\r\n\r\nsection a {\r\n  text-decoration: none;\r\n  color: #1ea7fd;\r\n}\r\n\r\nsection ul {\r\n  padding-left: 30px;\r\n  margin: 1em 0;\r\n}\r\n\r\nsection li {\r\n  margin-bottom: 8px;\r\n}\r\n\r\nsection .tip {\r\n  display: inline-block;\r\n  border-radius: 1em;\r\n  font-size: 11px;\r\n  line-height: 12px;\r\n  font-weight: 700;\r\n  background: #e7fdd8;\r\n  color: #66bf3c;\r\n  padding: 4px 12px;\r\n  margin-right: 10px;\r\n  vertical-align: top;\r\n}\r\n\r\nsection .tip-wrapper {\r\n  font-size: 13px;\r\n  line-height: 20px;\r\n  margin-top: 40px;\r\n  margin-bottom: 40px;\r\n}\r\n\r\nsection .tip-wrapper svg {\r\n  display: inline-block;\r\n  height: 12px;\r\n  width: 12px;\r\n  margin-right: 4px;\r\n  vertical-align: top;\r\n  margin-top: 3px;\r\n}\r\n\r\nsection .tip-wrapper svg path {\r\n  fill: #1ea7fd;\r\n}\r\n",
                     "styleUrl": "./page.css"
                 }
             ],
@@ -827,7 +827,7 @@
         },
         {
             "name": "WelcomeComponent",
-            "id": "component-WelcomeComponent-57c8d88e70bb38b3a244c3b87c007ea469645b2db59b2b01cf4bd9babc0fff310aec9bb0cf87286cfa8792011af4a5e4aba6f7043eb94b4f7e764aa1ce23cd58",
+            "id": "component-WelcomeComponent-2fa3e1d842c73fe2952af68d1de02213cc946e6143f04b64edf9383cb08992cc3ef50fd8aa630448d08720f1e96b9cbbca2cfd55db6bb843164a6be6dc895845",
             "file": "src/app/pages/welcome/welcome.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -848,7 +848,7 @@
             "propertiesClass": [
                 {
                     "name": "listOfColumns",
-                    "defaultValue": "[\n    {\n      name: 'Name',\n      sortOrder: null,\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\n      sortDirections: ['ascend', 'descend', null],\n      sortPriority: 1,\n      filterMultiple: true,\n      listOfFilter: [\n        { text: 'Joe', value: 'Joe' },\n        { text: 'Jim', value: 'Jim', byDefault: true },\n      ],\n      filterFn: (list: string[], item: DataItem) =>\n        list.some((name) => item.name.indexOf(name) !== -1),\n    },\n    {\n      name: 'Age',\n      sortOrder: 'descend',\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\n      sortDirections: ['descend', null],\n      sortPriority: 3,\n      listOfFilter: [],\n      filterFn: null,\n      filterMultiple: true,\n    },\n    {\n      name: 'Address',\n      sortOrder: null,\n      sortDirections: ['ascend', 'descend', null],\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\n      sortPriority: 2,\n      filterMultiple: false,\n      listOfFilter: [\n        { text: 'London', value: 'London' },\n        { text: 'Sidney', value: 'Sidney' },\n      ],\n      filterFn: (address: string, item: DataItem) =>\n        item.address.indexOf(address) !== -1,\n    },\n  ]",
+                    "defaultValue": "[\r\n    {\r\n      name: 'Name',\r\n      sortOrder: null,\r\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortPriority: 1,\r\n      filterMultiple: true,\r\n      listOfFilter: [\r\n        { text: 'Joe', value: 'Joe' },\r\n        { text: 'Jim', value: 'Jim', byDefault: true },\r\n      ],\r\n      filterFn: (list: string[], item: DataItem) =>\r\n        list.some((name) => item.name.indexOf(name) !== -1),\r\n    },\r\n    {\r\n      name: 'Age',\r\n      sortOrder: 'descend',\r\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\r\n      sortDirections: ['descend', null],\r\n      sortPriority: 3,\r\n      listOfFilter: [],\r\n      filterFn: null,\r\n      filterMultiple: true,\r\n    },\r\n    {\r\n      name: 'Address',\r\n      sortOrder: null,\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\r\n      sortPriority: 2,\r\n      filterMultiple: false,\r\n      listOfFilter: [\r\n        { text: 'London', value: 'London' },\r\n        { text: 'Sidney', value: 'Sidney' },\r\n      ],\r\n      filterFn: (address: string, item: DataItem) =>\r\n        item.address.indexOf(address) !== -1,\r\n    },\r\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "ColumnItem[]",
@@ -858,7 +858,7 @@
                 },
                 {
                     "name": "listOfData",
-                    "defaultValue": "[\n    {\n      name: 'John Brown',\n      age: 32,\n      address: 'New York No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Green',\n      age: 42,\n      address: 'London No. 1 Lake Park',\n    },\n    {\n      name: 'Joe Black',\n      age: 32,\n      address: 'Sidney No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Red',\n      age: 32,\n      address: 'London No. 2 Lake Park',\n    },\n  ]",
+                    "defaultValue": "[\r\n    {\r\n      name: 'John Brown',\r\n      age: 32,\r\n      address: 'New York No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Green',\r\n      age: 42,\r\n      address: 'London No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Joe Black',\r\n      age: 32,\r\n      address: 'Sidney No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Red',\r\n      age: 32,\r\n      address: 'London No. 2 Lake Park',\r\n    },\r\n  ]",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "DataItem[]",
@@ -896,7 +896,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\nimport {\n  NzTableFilterFn,\n  NzTableFilterList,\n  NzTableSortFn,\n  NzTableSortOrder\n} from 'ng-zorro-antd/table';\n\ninterface DataItem {\n  name: string;\n  age: number;\n  address: string;\n}\n\ninterface ColumnItem {\n  name: string;\n  sortOrder: NzTableSortOrder | null;\n  sortFn: NzTableSortFn<DataItem> | null;\n  sortPriority: boolean | number;\n  listOfFilter: NzTableFilterList;\n  filterFn: NzTableFilterFn<DataItem> | null;\n  filterMultiple: boolean;\n  sortDirections: NzTableSortOrder[];\n}\n\n@Component({\n  selector: 'app-welcome',\n  templateUrl: './welcome.component.html',\n  styleUrls: ['./welcome.component.scss'],\n})\nexport class WelcomeComponent implements OnInit {\n  listOfColumns: ColumnItem[] = [\n    {\n      name: 'Name',\n      sortOrder: null,\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\n      sortDirections: ['ascend', 'descend', null],\n      sortPriority: 1,\n      filterMultiple: true,\n      listOfFilter: [\n        { text: 'Joe', value: 'Joe' },\n        { text: 'Jim', value: 'Jim', byDefault: true },\n      ],\n      filterFn: (list: string[], item: DataItem) =>\n        list.some((name) => item.name.indexOf(name) !== -1),\n    },\n    {\n      name: 'Age',\n      sortOrder: 'descend',\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\n      sortDirections: ['descend', null],\n      sortPriority: 3,\n      listOfFilter: [],\n      filterFn: null,\n      filterMultiple: true,\n    },\n    {\n      name: 'Address',\n      sortOrder: null,\n      sortDirections: ['ascend', 'descend', null],\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\n      sortPriority: 2,\n      filterMultiple: false,\n      listOfFilter: [\n        { text: 'London', value: 'London' },\n        { text: 'Sidney', value: 'Sidney' },\n      ],\n      filterFn: (address: string, item: DataItem) =>\n        item.address.indexOf(address) !== -1,\n    },\n  ];\n\n  listOfData: DataItem[] = [\n    {\n      name: 'John Brown',\n      age: 32,\n      address: 'New York No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Green',\n      age: 42,\n      address: 'London No. 1 Lake Park',\n    },\n    {\n      name: 'Joe Black',\n      age: 32,\n      address: 'Sidney No. 1 Lake Park',\n    },\n    {\n      name: 'Jim Red',\n      age: 32,\n      address: 'London No. 2 Lake Park',\n    },\n  ];\n\n  listOfDisplayData = [...this.listOfData];\n\n  constructor() {}\n\n  ngOnInit() {}\n\n}\n",
+            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\r\nimport {\r\n  NzTableFilterFn,\r\n  NzTableFilterList,\r\n  NzTableSortFn,\r\n  NzTableSortOrder\r\n} from 'ng-zorro-antd/table';\r\n\r\ninterface DataItem {\r\n  name: string;\r\n  age: number;\r\n  address: string;\r\n}\r\n\r\ninterface ColumnItem {\r\n  name: string;\r\n  sortOrder: NzTableSortOrder | null;\r\n  sortFn: NzTableSortFn<DataItem> | null;\r\n  sortPriority: boolean | number;\r\n  listOfFilter: NzTableFilterList;\r\n  filterFn: NzTableFilterFn<DataItem> | null;\r\n  filterMultiple: boolean;\r\n  sortDirections: NzTableSortOrder[];\r\n}\r\n\r\n@Component({\r\n  selector: 'app-welcome',\r\n  templateUrl: './welcome.component.html',\r\n  styleUrls: ['./welcome.component.scss'],\r\n})\r\nexport class WelcomeComponent implements OnInit {\r\n  listOfColumns: ColumnItem[] = [\r\n    {\r\n      name: 'Name',\r\n      sortOrder: null,\r\n      sortFn: (a: DataItem, b: DataItem) => a.name.localeCompare(b.name),\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortPriority: 1,\r\n      filterMultiple: true,\r\n      listOfFilter: [\r\n        { text: 'Joe', value: 'Joe' },\r\n        { text: 'Jim', value: 'Jim', byDefault: true },\r\n      ],\r\n      filterFn: (list: string[], item: DataItem) =>\r\n        list.some((name) => item.name.indexOf(name) !== -1),\r\n    },\r\n    {\r\n      name: 'Age',\r\n      sortOrder: 'descend',\r\n      sortFn: (a: DataItem, b: DataItem) => a.age - b.age,\r\n      sortDirections: ['descend', null],\r\n      sortPriority: 3,\r\n      listOfFilter: [],\r\n      filterFn: null,\r\n      filterMultiple: true,\r\n    },\r\n    {\r\n      name: 'Address',\r\n      sortOrder: null,\r\n      sortDirections: ['ascend', 'descend', null],\r\n      sortFn: (a: DataItem, b: DataItem) => a.address.length - b.address.length,\r\n      sortPriority: 2,\r\n      filterMultiple: false,\r\n      listOfFilter: [\r\n        { text: 'London', value: 'London' },\r\n        { text: 'Sidney', value: 'Sidney' },\r\n      ],\r\n      filterFn: (address: string, item: DataItem) =>\r\n        item.address.indexOf(address) !== -1,\r\n    },\r\n  ];\r\n\r\n  listOfData: DataItem[] = [\r\n    {\r\n      name: 'John Brown',\r\n      age: 32,\r\n      address: 'New York No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Green',\r\n      age: 42,\r\n      address: 'London No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Joe Black',\r\n      age: 32,\r\n      address: 'Sidney No. 1 Lake Park',\r\n    },\r\n    {\r\n      name: 'Jim Red',\r\n      age: 32,\r\n      address: 'London No. 2 Lake Park',\r\n    },\r\n  ];\r\n\r\n  listOfDisplayData = [...this.listOfData];\r\n\r\n  constructor() {}\r\n\r\n  ngOnInit() {}\r\n\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -922,13 +922,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-3e7ef3d21cf44016b9731cead301e7b97186f3d9ab79f9e301bd8f7e54c58be0bdeeb8e93c2a052db69ff65d7b1e2396b98dff99783821c7321ae22acd74171c",
+            "id": "module-AppModule-d7d420972b0dea90b78722611a1f1a20fa9538b6da645b34397598dd110152c1296c99706d46c84c04459490b4ac3f5b68eb77e62b0127a4631fe6d816f161bf",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { registerLocaleData } from '@angular/common';\nimport { HttpClientModule } from '@angular/common/http';\nimport es from '@angular/common/locales/es';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\nimport { es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { IconsProviderModule } from './icons-provider.module';\n\nregisterLocaleData(es);\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    FormsModule,\n    HttpClientModule,\n    BrowserAnimationsModule,\n    IconsProviderModule,\n    NzLayoutModule,\n    NzMenuModule,\n    ReactiveFormsModule,\n  ],\n  providers: [\n    { provide: NZ_I18N, useValue: es_ES }\n  ],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { registerLocaleData } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport es from '@angular/common/locales/es';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';\r\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\r\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { IconsProviderModule } from './icons-provider.module';\r\n\r\nregisterLocaleData(es);\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    IconsProviderModule,\r\n    NzLayoutModule,\r\n    NzMenuModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  providers: [\r\n    { provide: NZ_I18N, useValue: es_ES }\r\n  ],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -973,13 +973,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-6f983b6aa850dd2327a1e96817bf90699ac427dfeac496c5ced03648e0d7760222c1c06d098df550d9791c3ae60a11d695f1e59f7a5560eef04ddbdb6a0d8d74",
+            "id": "module-AppRoutingModule-0e180c37b08bc2bc78a66ac6976c863d4bee806b22d19887657202aeedd94e23a6383ada98b0a19c582379082aa5d4bf860463ff2202eb33deb7c1a5f131c048",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { Routes, RouterModule } from '@angular/router';\n\nconst routes: Routes = [\n  { path: '', pathMatch: 'full', redirectTo: '/welcome' },\n  { path: 'welcome', loadChildren: () => \"import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)\" },\n  { path: 'my-form', loadChildren: () => \"import('./pages/my-form/my-form.module').then(m => m.MyFormModule)\" },\n  { path: 'monitor', loadChildren: () => \"import('./pages/monitor/monitor.module').then(m => m.MonitorModule)\" },\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\n\r\nconst routes: Routes = [\r\n  { path: '', pathMatch: 'full', redirectTo: '/welcome' },\r\n  { path: 'welcome', loadChildren: () => \"import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)\" },\r\n  { path: 'my-form', loadChildren: () => \"import('./pages/my-form/my-form.module').then(m => m.MyFormModule)\" },\r\n  { path: 'monitor', loadChildren: () => \"import('./pages/monitor/monitor.module').then(m => m.MonitorModule)\" },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forRoot(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class AppRoutingModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1053,13 +1053,13 @@
         },
         {
             "name": "IconsProviderModule",
-            "id": "module-IconsProviderModule-a873842b632570d5b53fb4826edb2a5a12de8b90742f2ded2501bcf3d078227a73a5eb3c7b7812d738e50f58c61970561365e0aa6a5c715a3d7a79347d0ce65d",
+            "id": "module-IconsProviderModule-9310aa1e8fefed7450a059ad78071247ca5242d6bbe3d295b12a144951ffb5ae6122fe730eac6db6562c871b75db1ef5d2cc62a91bdda66bb93e67354d2ee526",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/icons-provider.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';\n\nimport {\n  MenuFoldOutline,\n  MenuUnfoldOutline,\n  FormOutline,\n  DashboardOutline\n} from '@ant-design/icons-angular/icons';\n\nconst icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];\n\n@NgModule({\n  imports: [NzIconModule],\n  exports: [NzIconModule],\n  providers: [\n    { provide: NZ_ICONS, useValue: icons }\n  ]\n})\nexport class IconsProviderModule {\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { NZ_ICONS, NzIconModule } from 'ng-zorro-antd/icon';\r\n\r\nimport {\r\n  MenuFoldOutline,\r\n  MenuUnfoldOutline,\r\n  FormOutline,\r\n  DashboardOutline\r\n} from '@ant-design/icons-angular/icons';\r\n\r\nconst icons = [MenuFoldOutline, MenuUnfoldOutline, DashboardOutline, FormOutline];\r\n\r\n@NgModule({\r\n  imports: [NzIconModule],\r\n  exports: [NzIconModule],\r\n  providers: [\r\n    { provide: NZ_ICONS, useValue: icons }\r\n  ]\r\n})\r\nexport class IconsProviderModule {\r\n}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1260,13 +1260,13 @@
         },
         {
             "name": "WelcomeModule",
-            "id": "module-WelcomeModule-82c4850b6da6cff8b7dd09bb234da2b0e2a507cdda9e2c96b986bc8fb766ee806b6515becdc5f94be2d6c481d37325fa9d4c4b4a1ad8ba48adb868d9e7db5cb4",
+            "id": "module-WelcomeModule-67f95b2d17d8afaaa7425e33d27d4032a9b630850b886fc235101d8edefa28b68c625d38b1ef5d4ba8cfbf2eaf83c6c658eff4bd33ebab374133fa6644d792cc",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/welcome/welcome.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { NgModule } from '@angular/core';\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\nimport { NzDividerModule } from 'ng-zorro-antd/divider';\nimport { NzDropDownModule } from 'ng-zorro-antd/dropdown';\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\nimport { NzTableModule } from 'ng-zorro-antd/table';\nimport { WelcomeRoutingModule } from './welcome-routing.module';\nimport { WelcomeComponent } from './welcome.component';\n\n@NgModule({\n  imports: [\n    WelcomeRoutingModule,\n    NzTableModule,\n    NzDividerModule,\n    CommonModule,\n    NzMenuModule,\n    NzDropDownModule,\n    ReactiveFormsModule,\n    FormsModule,\n  ],\n  declarations: [WelcomeComponent],\n  exports: [WelcomeComponent],\n})\nexport class WelcomeModule {}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from '@angular/core';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { NzDividerModule } from 'ng-zorro-antd/divider';\r\nimport { NzDropDownModule } from 'ng-zorro-antd/dropdown';\r\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\r\nimport { NzTableModule } from 'ng-zorro-antd/table';\r\nimport { WelcomeRoutingModule } from './welcome-routing.module';\r\nimport { WelcomeComponent } from './welcome.component';\r\n\r\n@NgModule({\r\n  imports: [\r\n    WelcomeRoutingModule,\r\n    NzTableModule,\r\n    NzDividerModule,\r\n    CommonModule,\r\n    NzMenuModule,\r\n    NzDropDownModule,\r\n    ReactiveFormsModule,\r\n    FormsModule,\r\n  ],\r\n  declarations: [WelcomeComponent],\r\n  exports: [WelcomeComponent],\r\n})\r\nexport class WelcomeModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1308,13 +1308,13 @@
         },
         {
             "name": "WelcomeRoutingModule",
-            "id": "module-WelcomeRoutingModule-79a2199173960b76fc7a6795513f8532618b497bdb73baa9959b151df6429473fb2958c85e184ba5e8f4b0dcdf2ab6dbcee55e01498999b5a556f86b1c1253c8",
+            "id": "module-WelcomeRoutingModule-85c2fd8dad6130429ff0728fca39b4c6831f09a7c9b8450db15638e9b24d543ea7a4d15536c578538685df336c2cbedfbaecbaa4d9c24014f5b67fccc8aa7243",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/pages/welcome/welcome-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { Routes, RouterModule } from '@angular/router';\nimport { WelcomeComponent } from './welcome.component';\n\nconst routes: Routes = [\n  { path: '', component: WelcomeComponent },\n];\n\n@NgModule({\n  imports: [RouterModule.forChild(routes)],\n  exports: [RouterModule]\n})\nexport class WelcomeRoutingModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { Routes, RouterModule } from '@angular/router';\r\nimport { WelcomeComponent } from './welcome.component';\r\n\r\nconst routes: Routes = [\r\n  { path: '', component: WelcomeComponent },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule]\r\n})\r\nexport class WelcomeRoutingModule { }\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1359,21 +1359,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
+                "file": "src/environments/environment.prod.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: false\n}"
+                "defaultValue": "{\r\n  production: true\r\n}"
             },
             {
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "defaultValue": "{\r\n  production: false\r\n}"
             },
             {
                 "name": "icons",
@@ -1562,7 +1562,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Button>",
-                "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Button) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1572,7 +1572,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Header>",
-                "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Header) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1582,7 +1582,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<Page>",
-                "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                "defaultValue": "(args: Page) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1620,18 +1620,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -1641,7 +1629,19 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "defaultValue": "{\r\n  production: true\r\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  production: false\r\n}"
                 }
             ],
             "src/app/icons-provider.module.ts": [
@@ -1705,7 +1705,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Button>",
-                    "defaultValue": "(args: Button) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Button) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/pages/my-form/button-submit/ButtonSubmit.stories.ts": [
@@ -1829,7 +1829,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Header>",
-                    "defaultValue": "(args: Header) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Header) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/stories/Page.stories.ts": [
@@ -1861,7 +1861,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<Page>",
-                    "defaultValue": "(args: Page) => ({\n  props: args,\n})"
+                    "defaultValue": "(args: Page) => ({\r\n  props: args,\r\n})"
                 }
             ]
         },
