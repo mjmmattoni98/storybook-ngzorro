@@ -6,6 +6,8 @@
     "coreui",
     "devkit",
     "ngzorro",
-    "sider"
-  ]
+    "sider",
+    "stylelint"
+  ],
+  "stylelint.validate": ["html"]
 }
