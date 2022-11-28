@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
 
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,7 +11,6 @@ import { es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { IconsProviderModule } from './icons-provider.module';
 
 registerLocaleData(es);
