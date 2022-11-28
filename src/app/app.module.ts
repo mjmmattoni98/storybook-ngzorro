@@ -16,9 +16,7 @@ import { IconsProviderModule } from './icons-provider.module';
 registerLocaleData(es);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,9 +28,7 @@ registerLocaleData(es);
     NzMenuModule,
     ReactiveFormsModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: es_ES }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: es_ES }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

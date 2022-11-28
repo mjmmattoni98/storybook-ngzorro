@@ -11,7 +11,8 @@
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
     "test-storybook": "test-storybook",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "source-map-explorer": "source-map-explorer dist/storybook-ngzorro/**/*.js"
   },
   "private": true,
   "dependencies": {
@@ -42,7 +43,10 @@
     "@angular/cli": "~14.2.8",
     "@angular/compiler-cli": "^14.2.0",
     "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@badeball/cypress-cucumber-preprocessor": "^14.0.0",
     "@compodoc/compodoc": "^1.1.19",
+    "@cypress/webpack-preprocessor": "^5.15.5",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -57,7 +61,7 @@
     "@typescript-eslint/parser": "^5.44.0",
     "autoprefixer": "^10.4.13",
     "babel-loader": "^8.3.0",
-    "cypress": "^11.1.0",
+    "cypress": "^11.2.0",
     "eslint": "^8.28.0",
     "eslint-plugin-chai-friendly": "^0.7.2",
     "eslint-plugin-cypress": "^2.12.1",
@@ -69,12 +73,20 @@
     "karma-jasmine-html-reporter": "~2.0.0",
     "postcss": "^8.4.18",
     "postcss-html": "^1.5.0",
+    "source-map-explorer": "^2.5.3",
     "stylelint": "^14.15.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard": "^29.0.0",
     "stylelint-config-standard-scss": "^6.1.0",
     "tailwindcss": "^3.2.2",
-    "typescript": "~4.7.2"
+    "typescript": "~4.7.2",
+    "webpack": "^5.75.0"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/**/[filepath]/**/*.{js,ts}",
+      "cypress/e2e/**/[filepath].{js,ts}"
+    ]
   }
 }
