@@ -1046,13 +1046,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-d7d420972b0dea90b78722611a1f1a20fa9538b6da645b34397598dd110152c1296c99706d46c84c04459490b4ac3f5b68eb77e62b0127a4631fe6d816f161bf",
+            "id": "module-AppModule-c0c9ca739dcbff7f6744fda5ea8fce0e3dfcc463c79a5ec5db19f317e890f4b5830e3540f5b87fae4f7e95d46e6b5805771d8f10bd06fc403f325af5d4f4ffa0",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\n\r\nimport { registerLocaleData } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport es from '@angular/common/locales/es';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';\r\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\r\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { AppComponent } from './app.component';\r\nimport { IconsProviderModule } from './icons-provider.module';\r\n\r\nregisterLocaleData(es);\r\n\r\n@NgModule({\r\n  declarations: [\r\n    AppComponent\r\n  ],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    IconsProviderModule,\r\n    NzLayoutModule,\r\n    NzMenuModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  providers: [\r\n    { provide: NZ_I18N, useValue: es_ES }\r\n  ],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class AppModule { }\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { BrowserModule } from '@angular/platform-browser';\r\nimport { AppComponent } from './app.component';\r\n\r\nimport { registerLocaleData } from '@angular/common';\r\nimport { HttpClientModule } from '@angular/common/http';\r\nimport es from '@angular/common/locales/es';\r\nimport { FormsModule, ReactiveFormsModule } from '@angular/forms';\r\nimport { BrowserAnimationsModule } from '@angular/platform-browser/animations';\r\nimport { es_ES, NZ_I18N } from 'ng-zorro-antd/i18n';\r\nimport { NzLayoutModule } from 'ng-zorro-antd/layout';\r\nimport { NzMenuModule } from 'ng-zorro-antd/menu';\r\nimport { AppRoutingModule } from './app-routing.module';\r\nimport { IconsProviderModule } from './icons-provider.module';\r\n\r\nregisterLocaleData(es);\r\n\r\n@NgModule({\r\n  declarations: [AppComponent],\r\n  imports: [\r\n    BrowserModule,\r\n    AppRoutingModule,\r\n    FormsModule,\r\n    HttpClientModule,\r\n    BrowserAnimationsModule,\r\n    IconsProviderModule,\r\n    NzLayoutModule,\r\n    NzMenuModule,\r\n    ReactiveFormsModule,\r\n  ],\r\n  providers: [{ provide: NZ_I18N, useValue: es_ES }],\r\n  bootstrap: [AppComponent],\r\n})\r\nexport class AppModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1570,6 +1570,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "path",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "cypress.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "require(\"path\")"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1719,7 +1729,48 @@
                 "defaultValue": "(args: ButtonSubmitComponent) => ({\r\n  props: args,\r\n  moduleMetadata: {\r\n    declarations: [ButtonSubmitComponent],\r\n    imports: [NzButtonModule],\r\n  },\r\n})"
             }
         ],
-        "functions": [],
+        "functions": [
+            {
+                "name": "setupNodeEvents",
+                "file": "cypress.config.ts",
+                "ctype": "miscellaneous",
+                "subtype": "function",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "args": [
+                    {
+                        "name": "on",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "config",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "returnType": "Promise<Cypress.PluginConfigOptions>",
+                "jsdoctags": [
+                    {
+                        "name": "on",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        ],
         "typealiases": [],
         "enumerations": [],
         "groupedVariables": {
@@ -1987,9 +2038,64 @@
                     "type": "Story<Page>",
                     "defaultValue": "(args: Page) => ({\r\n  props: args,\r\n})"
                 }
+            ],
+            "cypress.config.ts": [
+                {
+                    "name": "path",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "cypress.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "require(\"path\")"
+                }
             ]
         },
-        "groupedFunctions": {},
+        "groupedFunctions": {
+            "cypress.config.ts": [
+                {
+                    "name": "setupNodeEvents",
+                    "file": "cypress.config.ts",
+                    "ctype": "miscellaneous",
+                    "subtype": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "args": [
+                        {
+                            "name": "on",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "config",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "returnType": "Promise<Cypress.PluginConfigOptions>",
+                    "jsdoctags": [
+                        {
+                            "name": "on",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "config",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
         "groupedEnumerations": {},
         "groupedTypeAliases": {}
     },
@@ -2089,6 +2195,26 @@
         "count": 2,
         "status": "low",
         "files": [
+            {
+                "filePath": "cypress.config.ts",
+                "type": "function",
+                "linktype": "miscellaneous",
+                "linksubtype": "function",
+                "name": "setupNodeEvents",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "cypress.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "path",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
             {
                 "filePath": "cypress/support/component.ts",
                 "type": "interface",
